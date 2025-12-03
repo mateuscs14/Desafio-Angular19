@@ -11,7 +11,7 @@ body {
     background-color: hsl(32 30% 96%);
 }
 
-/* Header Styles */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -48,7 +48,7 @@ header {
     color: #c67c4e;
 }
 
-/* Hero Section Styles */
+
 .section_principal {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/salao.jpg);
     background-size: cover;
@@ -86,7 +86,7 @@ header {
     margin-bottom: 20px;
 }
 
-/* Buttons */
+
 .botoes {
     display: flex;
     gap: 20px;
@@ -109,7 +109,6 @@ button:hover {
 
 .btn-primary {
     background-color: #c67c4e;
-    /* Copper/Bronze color */
     color: #fff;
 }
 
@@ -118,7 +117,7 @@ button:hover {
     color: #c67c4e;
 }
 
-/* Scroll Indicator */
+
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
@@ -159,13 +158,12 @@ button:hover {
     }
 }
 
-/* Other Sections (Preserved but minimally styled for now) */
+
 .historia {
     display: flex;
     justify-content: center;
     padding: 80px 20px;
     background-color: #FFF5F0;
-    /* Light beige background */
 }
 
 .historia-container {
@@ -222,11 +220,10 @@ button:hover {
     }
 }
 
-/* Nossos Trabalhos Section */
+
 .trabalhos {
     padding: 80px 20px;
     background-color: #FFF5F0;
-    /* Consistent background */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -250,7 +247,7 @@ button:hover {
     color: #666;
 }
 
-/* Filters */
+
 .filtros {
     display: flex;
     gap: 15px;
@@ -282,7 +279,7 @@ button:hover {
     border-color: #c67c4e;
 }
 
-/* Gallery Grid */
+
 .galeria {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -365,11 +362,10 @@ button:hover {
     margin-bottom: 15px;
 }
 
-/* Serviços & Preços Section */
+
 .precos {
     padding: 80px 20px;
     background-color: #FFF5F0;
-    /* Consistent background */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -464,11 +460,10 @@ button:hover {
     margin-top: 20px;
 }
 
-/* Contact Section */
+
 .contato {
     padding: 80px 20px;
     background-color: #FFF5F0;
-    /* Consistent background */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -560,7 +555,7 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* Footer */
+
 footer {
     background-color: #FFF5F0;
     padding: 40px 20px;

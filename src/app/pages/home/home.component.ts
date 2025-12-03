@@ -23,7 +23,6 @@ export class HomeComponent {
     { image: '/sombrancelha3.jpeg', category: 'Sombrancelhas', title: 'Sombrancelhas' },
     { image: '/cilios.jpg', category: 'Cílios', title: 'Cílios' },
     { image: '/maquiagem.jpg', category: 'Maquiagem', title: 'Maquiagem' },
-    // Duplicating for grid effect if needed, or keeping it simple
     { image: '/cilios.jpg', category: 'Cílios', title: 'Cílios' },
     { image: '/maquiagem.jpg', category: 'Maquiagem', title: 'Maquiagem' }
   ];
