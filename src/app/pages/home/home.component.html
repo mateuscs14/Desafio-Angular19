@@ -1,0 +1,242 @@
+<body>
+
+    <section class="section_principal" id="home">
+        <header [class.scrolled]="isScrolled">
+            <div class="logo">
+                <h2>Milena Portugal</h2>
+            </div>
+
+            <button class="hamburger" (click)="toggleMenu()">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="menu" [class.active]="isMenuOpen">
+                <a href="#home" (click)="closeMenu()">Inicio</a>
+                <a href="#contato" (click)="closeMenu()">Agendamento</a>
+                <a href="#historia" (click)="closeMenu()">Minha História</a>
+                <a href="#servicos" (click)="closeMenu()">Serviços</a>
+                <button class="btn-login" *ngIf="!currentUser" (click)="goToLogin(); closeMenu()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10 17 15 12 10 7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </svg>
+                    Login
+                </button>
+                <div class="user-menu" *ngIf="currentUser">
+                    <span class="user-name">Olá, {{ currentUser.name.split(' ')[0] }}</span>
+                    <button class="btn-login btn-logout" (click)="logout(); closeMenu()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        Sair
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="centro">
+            <h1>Milena Portugal</h1>
+            <h2>Onde sua beleza encontra a excelência</h2>
+            <div class="botoes">
+                <button class="btn-primary">Ver Serviços &rarr;</button>
+                <button class="btn-secondary">Minha História</button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+
+    <section class="historia" id="historia">
+        <div class="historia-container">
+            <div class="foto">
+                <img src="/milena2.jpeg" alt="Milena">
+            </div>
+            <!-- MUDAR O TEXTO DA HISTORIA POR A ORIGINAL -->
+            <div class="texto-historia">
+                <h2>Minha História</h2>
+                <p>Olá! Sou a Milena, e minha jornada no mundo da beleza começou há mais de 8 anos, quando ainda era uma
+                    jovem sonhadora apaixonada por transformar pessoas através da estética.</p>
+                <p>Comecei minha carreira trabalhando em diferentes salões, aprendendo com os melhores profissionais e
+                    me especializando em técnicas modernas de coloração, cortes e maquiagem. Cada cliente que atendi foi
+                    uma lição valiosa que me trouxe até aqui.</p>
+                <p>Em 2020, realizei o sonho de abrir meu próprio espaço. Um lugar onde cada cliente se sente especial,
+                    acolhida e valorizada. Mais do que transformar aparências, meu objetivo é elevar a autoestima e
+                    fazer cada pessoa brilhar com confiança.</p>
+                <p class="destaque">Aqui, você não é só mais um cliente - você faz parte da nossa família Milena.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="trabalhos" id="servicos">
+        <div class="trabalhos-header">
+            <h2>Nossos Trabalhos</h2>
+            <p>Uma seleção dos nossos melhores trabalhos. Cada transformação conta uma história única.</p>
+        </div>
+        <!-- ADICIONAR MAIS IMAGENS REAIS -->
+
+        <div class="filtros">
+            <button class="filtro-btn" [class.ativo]="selectedCategory === 'Todos'"
+                (click)="setCategory('Todos')">Todos</button>
+            <button class="filtro-btn" [class.ativo]="selectedCategory === 'Sombrancelhas'"
+                (click)="setCategory('Sombrancelhas')">Sombrancelhas</button>
+            <button class="filtro-btn" [class.ativo]="selectedCategory === 'Cílios'"
+                (click)="setCategory('Cílios')">Cílios</button>
+            <button class="filtro-btn" [class.ativo]="selectedCategory === 'Maquiagem'"
+                (click)="setCategory('Maquiagem')">Maquiagem</button>
+        </div>
+
+        <div class="galeria">
+            <div class="item-galeria" *ngFor="let item of filteredItems">
+                <img [src]="item.image" [alt]="item.title">
+                <div class="overlay">
+                    <h3>{{ item.title }}</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="precos">
+        <div class="precos-header">
+            <h2>Serviços & Preços</h2>
+            <p>Oferecemos uma gama completa de serviços de beleza com preços justos e qualidade excepcional.</p>
+        </div>
+
+        <div class="grid-precos">
+            <div class="card-preco">
+                <div class="icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#c67c4e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="6" cy="6" r="3"></circle>
+                        <circle cx="6" cy="18" r="3"></circle>
+                        <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+                        <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+                        <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+                <!-- CORRIGIR O NOME PARA SOBRANCELHAS E MUDAR OS PREÇOS -->
+                <h3>Sombrancelhas</h3>
+                <ul class="lista-precos">
+                    <li><span>Sombrancelhas</span> <span>R$ 80</span></li>
+                    <li><span>Corte + Escova</span> <span>R$ 120</span></li>
+                    <li><span>Coloração Completa</span> <span>R$ 180</span></li>
+                    <li><span>Balayage/Ombré</span> <span>R$ 250</span></li>
+                    <li><span>Hidratação Profunda</span> <span>R$ 90</span></li>
+                    <li><span>Reconstrução Capilar</span> <span>R$ 120</span></li>
+                </ul>
+            </div>
+
+
+            <div class="card-preco">
+                <div class="icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#c67c4e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                        </path>
+                    </svg>
+                </div>
+                <h3>Cílios</h3>
+                <ul class="lista-precos">
+                    <li><span>Manicure Simples</span> <span>R$ 40</span></li>
+                    <li><span>Manicure + Pedicure</span> <span>R$ 70</span></li>
+                    <li><span>Unha em Gel</span> <span>R$ 80</span></li>
+                    <li><span>Alongamento</span> <span>R$ 120</span></li>
+                    <li><span>Nail Art</span> <span>R$ 15 (por unha)</span></li>
+                </ul>
+            </div>
+
+
+            <div class="card-preco">
+                <div class="icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#c67c4e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="13.5" cy="6.5" r=".5"></circle>
+                        <circle cx="17.5" cy="10.5" r=".5"></circle>
+                        <circle cx="8.5" cy="7.5" r=".5"></circle>
+                        <circle cx="6.5" cy="12.5" r=".5"></circle>
+                        <path
+                            d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z">
+                        </path>
+                    </svg>
+                </div>
+                <h3>Maquiagem</h3>
+                <ul class="lista-precos">
+                    <li><span>Maquiagem Social</span> <span>R$ 150</span></li>
+                    <li><span>Maquiagem Noiva</span> <span>R$ 300</span></li>
+                    <li><span>Maquiagem + Penteado</span> <span>R$ 250</span></li>
+                    <li><span>Design de Sobrancelhas</span> <span>R$ 50</span></li>
+                    <li><span>Aplicação de Cílios</span> <span>R$ 60</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="nota-rodape">* Preços podem variar conforme a complexidade do serviço. Entre em contato para
+            orçamentos personalizados.</p>
+    </section>
+
+    <section class="contato" id="contato">
+        <div class="contato-header">
+            <h2>Entre em Contato</h2>
+            <p>Estamos prontas para receber você! Agende seu horário e venha nos visitar.</p>
+        </div>
+
+        <div class="grid-contato">
+            <!-- Endereço -->
+            <div class="card-contato">
+                <div class="icon-contato">
+                    <!-- Ícone Endereço -->
+                </div>
+                <h3>Endereço</h3>
+                <p>Rua das guebas</p>
+                <p>??????????</p>
+            </div>
+
+            <!-- Telefone -->
+            <div class="card-contato">
+                <div class="icon-contato">
+                    <!-- Ícone Telefone -->
+                </div>
+                <h3>Telefone</h3>
+                <p>(71) 9????-????</p>
+                <p>WhatsApp</p>
+            </div>
+
+            <!-- Horário -->
+            <div class="card-contato">
+                <div class="icon-contato">
+                    <!-- Ícone Horário -->
+                </div>
+                <h3>Horário</h3>
+                <p>Seg - Sex: 9h às 21h</p>
+                <p>Sáb - Dom: 9h às 12h</p>
+            </div>
+
+            <!-- Instagram -->
+            <div class="card-contato">
+                <div class="icon-contato">
+                    <i class="bi bi-instagram" style="font-size: 2rem; color: #E1306C;"></i>
+                </div>
+                <h3>Instagram</h3>
+                <p>MilenaPortugal</p>
+                <p>Siga para novidades</p>
+            </div>
+        </div>
+
+        <button class="btn-whatsapp">
+            <!-- Ícone WhatsApp -->
+            Agendar pelo WhatsApp
+        </button>
+    </section>
+
+    <footer>
+        <p>Feito com <span style="color: #c67c4e;">&hearts;</span> por Milena Portugal</p>
+        <p>&copy; 2025 Milena Portugal. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
