@@ -35,21 +35,32 @@ export class HomeComponent {
   }
 
   portfolioItems: GalleryItem[] = [
-    { image: '/cilios.jpeg', title: 'Extensão de Cílios Volume Russo', category: 'Cílios' },
-    { image: '/sombrancelha.jpeg', title: 'Design de Sobrancelhas', category: 'Sombrancelhas' },
-    { image: '/make1.jpeg', title: 'Maquiagem Social', category: 'Maquiagem' },
-    { image: '/make2.jpeg', title: 'Maquiagem Artística', category: 'Maquiagem' },
-    { image: '/cilios2.jpeg', title: 'Lifting de Cílios', category: 'Cílios' },
-    { image: '/sombrancelha2.jpeg', title: 'Micropigmentação', category: 'Sombrancelhas' }
+    { image: '/cilios.jpg', title: 'Extensão de Cílios Volume Russo', category: 'Cílios' },
+    { image: '/cílios1.jpeg', title: 'Alongamento de Cílios', category: 'Cílios' },
+    { image: '/cílios2.jpeg', title: 'Lifting de Cílios', category: 'Cílios' },
+    { image: '/sobrancelha1.jpeg', title: 'Design de Sobrancelhas', category: 'Sobrancelhas' },
+    { image: '/sobrancelha2.jpeg', title: 'Micropigmentação', category: 'Sobrancelhas' },
+    { image: '/sobrancelha3.jpeg', title: 'Brow Lamination', category: 'Sobrancelhas' },
+    { image: '/maquiagem.jpg', title: 'Maquiagem Social', category: 'Maquiagem' },
+    { image: '/maquiagem2.jpeg', title: 'Maquiagem Artística', category: 'Maquiagem' }
   ];
 
   filteredItems: GalleryItem[] = [];
   selectedCategory: string = 'Todos';
   currentUser: any = null;
+  selectedImage: string | null = null;
 
   constructor(private router: Router, private authService: AuthService) {
     this.filteredItems = this.portfolioItems;
     this.authService.currentUser.subscribe(x => this.currentUser = x);
+  }
+
+  openImage(image: string) {
+    this.selectedImage = image;
+  }
+
+  closeImage() {
+    this.selectedImage = null;
   }
 
   setCategory(category: string): void {

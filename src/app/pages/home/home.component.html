@@ -57,7 +57,7 @@
             <div class="foto">
                 <img src="/milena2.jpeg" alt="Milena">
             </div>
-            <!-- MUDAR O TEXTO DA HISTORIA POR A ORIGINAL -->
+
             <div class="texto-historia">
                 <h2>Minha História</h2>
                 <p>Olá! Sou a Milena, e minha jornada no mundo da beleza começou há mais de 8 anos, quando ainda era uma
@@ -78,13 +78,12 @@
             <h2>Nossos Trabalhos</h2>
             <p>Uma seleção dos nossos melhores trabalhos. Cada transformação conta uma história única.</p>
         </div>
-        <!-- ADICIONAR MAIS IMAGENS REAIS -->
 
         <div class="filtros">
             <button class="filtro-btn" [class.ativo]="selectedCategory === 'Todos'"
                 (click)="setCategory('Todos')">Todos</button>
-            <button class="filtro-btn" [class.ativo]="selectedCategory === 'Sombrancelhas'"
-                (click)="setCategory('Sombrancelhas')">Sombrancelhas</button>
+            <button class="filtro-btn" [class.ativo]="selectedCategory === 'Sobrancelhas'"
+                (click)="setCategory('Sobrancelhas')">Sobrancelhas</button>
             <button class="filtro-btn" [class.ativo]="selectedCategory === 'Cílios'"
                 (click)="setCategory('Cílios')">Cílios</button>
             <button class="filtro-btn" [class.ativo]="selectedCategory === 'Maquiagem'"
@@ -92,12 +91,17 @@
         </div>
 
         <div class="galeria">
-            <div class="item-galeria" *ngFor="let item of filteredItems">
+            <div class="item-galeria" *ngFor="let item of filteredItems" (click)="openImage(item.image)">
                 <img [src]="item.image" [alt]="item.title">
                 <div class="overlay">
                     <h3>{{ item.title }}</h3>
                 </div>
             </div>
+        </div>
+
+        <div class="lightbox" *ngIf="selectedImage" (click)="closeImage()">
+            <span class="close">&times;</span>
+            <img [src]="selectedImage" (click)="$event.stopPropagation()">
         </div>
     </section>
 
@@ -119,15 +123,15 @@
                         <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
                     </svg>
                 </div>
-                <!-- CORRIGIR O NOME PARA SOBRANCELHAS E MUDAR OS PREÇOS -->
-                <h3>Sombrancelhas</h3>
+                <h3>Sobrancelhas</h3>
                 <ul class="lista-precos">
-                    <li><span>Sombrancelhas</span> <span>R$ 80</span></li>
-                    <li><span>Corte + Escova</span> <span>R$ 120</span></li>
-                    <li><span>Coloração Completa</span> <span>R$ 180</span></li>
-                    <li><span>Balayage/Ombré</span> <span>R$ 250</span></li>
-                    <li><span>Hidratação Profunda</span> <span>R$ 90</span></li>
-                    <li><span>Reconstrução Capilar</span> <span>R$ 120</span></li>
+                    <li><span>Apenas pintura com Henna</span> <span>R$20</span></li>
+                    <li><span>Brow Lamination</span> <span>R$100</span></li>
+                    <li><span>Design de Sobrancelhas com Henna</span> <span>R$30</span></li>
+                    <li><span>Design de Sobrancelhas Simples</span> <span>R$20</span></li>
+                    <li><span>Epilação de Buço com linha</span> <span>R$15</span></li>
+                    <li><span>Micropigmentação de Sobrancelhas</span> <span>R$350</span></li>
+                    <li><span>Retoque Micro</span> <span>R$0</span></li>
                 </ul>
             </div>
 
@@ -143,11 +147,13 @@
                 </div>
                 <h3>Cílios</h3>
                 <ul class="lista-precos">
-                    <li><span>Manicure Simples</span> <span>R$ 40</span></li>
-                    <li><span>Manicure + Pedicure</span> <span>R$ 70</span></li>
-                    <li><span>Unha em Gel</span> <span>R$ 80</span></li>
-                    <li><span>Alongamento</span> <span>R$ 120</span></li>
-                    <li><span>Nail Art</span> <span>R$ 15 (por unha)</span></li>
+                    <li><span>Colar cílios postiços (Com o seu)</span> <span>R$10</span></li>
+                    <li><span>Colar cílios postiços (Com o meu)</span> <span>R$15</span></li>
+                    <li><span>Extensão de Cílios (Volume Brasileiro)</span> <span>R$120</span></li>
+                    <li><span>Extensão de Cílios (Volume Fox)</span> <span>R$140</span></li>
+                    <li><span>Extensão de Cílios (Volume Mega Brasileiro)</span> <span>R$130</span></li>
+                    <li><span>Extensão de Cílios (Volume U)</span> <span>R$140</span></li>
+                    <li><span>Look Francês</span> <span>R$25</span></li>
                 </ul>
             </div>
 
@@ -167,11 +173,9 @@
                 </div>
                 <h3>Maquiagem</h3>
                 <ul class="lista-precos">
-                    <li><span>Maquiagem Social</span> <span>R$ 150</span></li>
-                    <li><span>Maquiagem Noiva</span> <span>R$ 300</span></li>
-                    <li><span>Maquiagem + Penteado</span> <span>R$ 250</span></li>
-                    <li><span>Design de Sobrancelhas</span> <span>R$ 50</span></li>
-                    <li><span>Aplicação de Cílios</span> <span>R$ 60</span></li>
+                    <li><span>Maquiagem</span> <span>R$130</span></li>
+                    <li><span>Maquiagem Noiva</span> <span>R$300</span></li>
+                    <li><span>Maquiagem + Penteado</span> <span>R$250</span></li>
                 </ul>
             </div>
         </div>
@@ -187,51 +191,48 @@
         </div>
 
         <div class="grid-contato">
-            <!-- Endereço -->
-            <div class="card-contato">
+            <a href="https://maps.app.goo.gl/UWDy1tifELPUV9Nb7" target="_blank" class="card-contato">
                 <div class="icon-contato">
-                    <!-- Ícone Endereço -->
+                    <i class="bi bi-geo-alt" style="font-size: 2rem; color: #c67c4e;"></i>
                 </div>
                 <h3>Endereço</h3>
-                <p>Rua das guebas</p>
-                <p>??????????</p>
-            </div>
+                <p>R. Direta da Teresinha, 825 - Rio Sena</p>
+                <p></p>
+            </a>
 
-            <!-- Telefone -->
             <div class="card-contato">
                 <div class="icon-contato">
-                    <!-- Ícone Telefone -->
+                    <i class="bi bi-telephone" style="font-size: 2rem; color: #c67c4e;"></i>
                 </div>
                 <h3>Telefone</h3>
-                <p>(71) 9????-????</p>
+                <p>(71) 98748-7796</p>
                 <p>WhatsApp</p>
             </div>
 
-            <!-- Horário -->
             <div class="card-contato">
                 <div class="icon-contato">
-                    <!-- Ícone Horário -->
+                    <i class="bi bi-clock" style="font-size: 2rem; color: #c67c4e;"></i>
                 </div>
                 <h3>Horário</h3>
                 <p>Seg - Sex: 9h às 21h</p>
                 <p>Sáb - Dom: 9h às 12h</p>
             </div>
 
-            <!-- Instagram -->
-            <div class="card-contato">
+            <a href="https://www.instagram.com/designmil?igsh=MXN3bGowZGk3dmRm" target="_blank" class="card-contato">
                 <div class="icon-contato">
                     <i class="bi bi-instagram" style="font-size: 2rem; color: #E1306C;"></i>
                 </div>
                 <h3>Instagram</h3>
-                <p>MilenaPortugal</p>
+                <p>desigmil</p>
                 <p>Siga para novidades</p>
-            </div>
+            </a>
         </div>
 
-        <button class="btn-whatsapp">
-            <!-- Ícone WhatsApp -->
+        <a href="https://api.whatsapp.com/send?1=pt_BR&phone=557187487796&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPNTY3MDY3MzQzMzUyNDI3AAGnlCliiv-KuAKBSsDwILxgS_irgDn7CfEkp1sFthF2Ygvuj4q2xLtJ3uvX42k_aem_2y1X_jWkyGf7F9Pu5DxsHw"
+            target="_blank" class="btn-whatsapp">
+            <i class="bi bi-whatsapp" style="margin-right: 10px;"></i>
             Agendar pelo WhatsApp
-        </button>
+        </a>
     </section>
 
     <footer>

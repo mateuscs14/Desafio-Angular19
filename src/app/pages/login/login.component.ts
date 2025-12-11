@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   isLogin = true;
   loginForm: FormGroup;
   registerForm: FormGroup;
@@ -36,6 +36,28 @@ export class LoginComponent {
       confirmPassword: ['', Validators.required],
       terms: [false, Validators.requiredTrue]
     });
+  }
+
+  ngOnInit() {
+    this.startImageCarousel();
+  }
+
+  ngOnDestroy() {
+    if (this.carouselInterval) {
+      clearInterval(this.carouselInterval);
+    }
+  }
+
+  images: string[] = ['/salao.jpg', '/salao2.jpg'];
+  currentImage: string = this.images[0];
+  private carouselInterval: any;
+
+  startImageCarousel() {
+    let index = 0;
+    this.carouselInterval = setInterval(() => {
+      index = (index + 1) % this.images.length;
+      this.currentImage = this.images[index];
+    }, 5000);
   }
 
   goHome() {
