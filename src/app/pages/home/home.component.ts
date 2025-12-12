@@ -35,14 +35,19 @@ export class HomeComponent {
   }
 
   portfolioItems: GalleryItem[] = [
-    { image: '/cilios.jpg', title: 'Extensão de Cílios Volume Russo', category: 'Cílios' },
-    { image: '/cílios1.jpeg', title: 'Alongamento de Cílios', category: 'Cílios' },
-    { image: '/cílios2.jpeg', title: 'Lifting de Cílios', category: 'Cílios' },
+    { image: '/cilios.jpg', title: 'Extensão de Cílios (Volume Brasileiro)', category: 'Cílios' },
+    { image: '/cílios1.jpeg', title: 'Extensão de Cílios (Volume Fox)', category: 'Cílios' },
+    { image: '/cílios2.jpeg', title: 'Extensão de Cílios (Volume Mega Brasileiro)', category: 'Cílios' },
+    { image: '/cílios3.jpeg', title: 'Extensão de Cílios (Volume U)', category: 'Cílios' },
+    { image: '/cílios4.jpeg', title: 'Look Francês', category: 'Cílios' },
+    { image: '/cílios5.jpeg', title: 'Colar cílios postiços', category: 'Cílios' },
+    { image: '/cílios6.jpeg', title: 'Extensão de Cílios (Volume Brasileiro)', category: 'Cílios' },
     { image: '/sobrancelha1.jpeg', title: 'Design de Sobrancelhas', category: 'Sobrancelhas' },
     { image: '/sobrancelha2.jpeg', title: 'Micropigmentação', category: 'Sobrancelhas' },
     { image: '/sobrancelha3.jpeg', title: 'Brow Lamination', category: 'Sobrancelhas' },
-    { image: '/maquiagem.jpg', title: 'Maquiagem Social', category: 'Maquiagem' },
-    { image: '/maquiagem2.jpeg', title: 'Maquiagem Artística', category: 'Maquiagem' }
+    { image: '/Sobrancelha4.jpeg', title: 'Design de Sobrancelhas', category: 'Sobrancelhas' },
+    { image: '/maquiagem.jpg', title: 'Maquiagem', category: 'Maquiagem' },
+    { image: '/maquiagem2.jpeg', title: 'Maquiagem', category: 'Maquiagem' }
   ];
 
   filteredItems: GalleryItem[] = [];
